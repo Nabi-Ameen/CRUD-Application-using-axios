@@ -15,23 +15,19 @@ const View = ({ posts, handleClick }) => {
                         <td>
                             {
                                 post.tags && post.tags.length > 0 ? post.tags.map((tag) => {
-                                    return (
-                                        <Badge bg="secondary" key={tag}>
-                                            {tag}
-                                        </Badge>
-                                    )
+                                    return <Badge bg="secondary" className='mx-1 py-2' key={tag}>{tag}</Badge>
                                 }) : 'No tags found'
                             }
                         </td>
-                        <td>
+                        <td className='text-center'>
                             <Button variant="info" onClick={() => {
-                                handleClick(post.id, "Information")
+                                handleClick(post.id, "view")
                             }}>View</Button>
-                            <Button variant="primary" onClick={() => {
-                                handleClick(post.id, "Edit")
+                            <Button variant="primary" className='mx-2' onClick={() => {
+                                handleClick(post.id, "edit")
                             }}>Edit</Button>
                             <Button variant="danger" onClick={() => {
-                                handleClick(post.id, "Remove")
+                                handleClick(post.id, "remove")
                             }}>Remove</Button>
                         </td>
                     </tr>
@@ -43,7 +39,7 @@ const View = ({ posts, handleClick }) => {
         <div>
             {
                 posts && posts.length > 0
-                    ? <Table striped bordered hover>
+                    ? <Table striped bordered hover size='sm'>
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -53,7 +49,6 @@ const View = ({ posts, handleClick }) => {
                             </tr>
                         </thead>
                         <tbody>
-
                             {generatePost()}
 
                         </tbody>
